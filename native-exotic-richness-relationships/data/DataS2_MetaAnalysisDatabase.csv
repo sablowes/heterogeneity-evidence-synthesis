@@ -1,0 +1,205 @@
+AuthorYear,Study,Case,Year,Grain,Grain_unit,ln_Grain,Latitude,Longitude,Extent ,Research_type,Habitat_type,z,var_z
+"Stohlgren et al., 2003",1,1,2003,1,m2,0,39,-105.3,[105-106],observational,forest,0.005000042,0.002967359
+"Stohlgren et al., 2003",1,2,2003,672,m2,6.5103,39,-105.3,[105-106],observational,forest,0.376885901,0.033333333
+"Stohlgren et al., 2003",1,3,2003,1,m2,0,39,-75.5,[103-104],observational,forest,-0.005000042,0.002531646
+"Stohlgren et al., 2003",1,4,2003,672,m2,6.5103,39,-75.5,[103-104],observational,forest,0.192337169,0.027777778
+"Stohlgren et al., 2003",1,5,2003,1,m2,0,44,-85,[105-106],observational,forest,0.038018307,0.002247191
+"Stohlgren et al., 2003",1,6,2003,672,m2,6.5103,44,-85,[105-106],observational,forest,0.018001944,0.014705882
+"Stohlgren et al., 2003",1,7,2003,1,m2,0,44,-120.5,[105-106],observational,forest,0.013000732,0.002898551
+"Stohlgren et al., 2003",1,8,2003,672,m2,6.5103,44,-120.5,[105-106],observational,forest,0.475957159,0.024390244
+"Stohlgren et al., 2003",1,9,2003,1,m2,0,41,-77.5,[105-106],observational,forest,0.036015564,0.001078749
+"Stohlgren et al., 2003",1,10,2003,672,m2,6.5103,41,-77.5,[105-106],observational,forest,0.621253234,0.012820513
+"Stohlgren et al., 2003",1,11,2003,1,m2,0,37.5,-79,[105-106],observational,forest,0.215264538,0.006756757
+"Stohlgren et al., 2003",1,12,2003,672,m2,6.5103,37.5,-79,[105-106],observational,forest,0.59014516,0.083333333
+"Stohlgren et al., 2003",1,13,2003,1,m2,0,47.5,-120.5,[105-106],observational,forest,0.020002667,0.008264463
+"Stohlgren et al., 2003",1,14,2003,672,m2,6.5103,47.5,-120.5,[105-106],observational,forest,0.032010929,0.111111111
+"Stohlgren et al., 2003",1,15,2003,1,m2,0,43,-107.5,[105-106],observational,forest,0.161386696,0.00462963
+"Stohlgren et al., 2003",1,16,2003,672,m2,6.5103,43,-107.5,[105-106],observational,forest,0.320545409,0.055555556
+"Brown & Peet, 2003",2,1,2003,100,m2,4.6052,36.64,-82.73,[103-104],observational,wetland,0.048036915,0.009615385
+"Brown & Peet, 2003",2,2,2003,10,m2,2.3026,36.64,-82.73,[103-104],observational,wetland,0.02200355,0.009615385
+"Brown & Peet, 2003",2,3,2003,1,m2,0,36.64,-82.73,[103-104],observational,wetland,0.036015564,0.009615385
+"Brown & Peet, 2003",2,4,2003,0.1,m2,-2.3026,36.64,-82.73,[103-104],observational,wetland,0.103366579,0.009615385
+"Brown & Peet, 2003",2,5,2003,0.01,m2,-4.6052,36.64,-82.73,[103-104],observational,wetland,0.050041729,0.009615385
+"Brown & Peet, 2003",2,6,2003,100,m2,4.6052,36.64,-82.73,[103-104],observational,forest,0.174757577,0.000932836
+"Brown & Peet, 2003",2,7,2003,10,m2,2.3026,36.64,-82.73,[103-104],observational,forest,0.13073985,0.000932836
+"Brown & Peet, 2003",2,8,2003,1,m2,0,36.64,-82.73,[103-104],observational,forest,0.118552299,0.000932836
+"Brown & Peet, 2003",2,9,2003,0.1,m2,-2.3026,36.64,-82.73,[103-104],observational,forest,0,0.000932836
+"de Albuquerque et al., 2011",3,1,2011,100,km2,18.4207,53.5,-2.25,[105-106],observational,many,1.221173518,0.000444642
+"Figueroa et al., 2011",4,1,2011,1600,m2,7.3778,-33,-71,[103-104],observational,many,-0.290940262,0.033333333
+"Gary & Azuma, 2005",5,1,2005,672,m2,6.5103,44,-120.5,[105-106],observational,forest,0.309519604,0.009345794
+"Adams & Engelhardt., 2009",6,1,2009,24,m2,3.1781,38.53,-77.03,[102-103],observational,forest,1.47221949,0.333333333
+"Nobis et al., 2016",7,1,2016,1,km2,13.8155,50.44,21.5,[103-104],observational,wetland,0.213171347,0.00729927
+"Bennett et al., 2012",8,1,2012,1,m2,0,49.51,-124.66,[104-105],observational,grassland,0.095287349,0.00166113
+"Dyderski et al., 2015",9,1,2015,1,km2,13.8155,52.24,16.57,[10-100],observational,wetland,0.829114038,0.035714286
+"Byrne et al.,2010",10,1,2010,7.5,m2,2.0149,40.15,-105.34,[103-104],observational,forest,-1.074899539,0.5
+"Byrne et al.,2010",10,2,2010,0.25,m2,-1.3863,40.15,-105.34,[103-104],observational,forest,-1.769914022,0.5
+"Vidra et al., 2006",11,1,2006,4,m2,1.3863,35.46,-78.48,[102-103],observational,wetland,-0.792813632,0.05
+"Godfree et al., 2004",12,1,2004,28,m2,3.3322,-35.42,148.34,[102-103],observational,grassland,0.276863823,0.01754386
+"Maskell et al., 2006",13,1,2006,5,m2,1.6094,52.51,-1.98,[102-103],observational,wetland,1.060878873,1
+"Chong et al.,2006",14,1,2006,1000,m2,6.9078,37.24,-111.41,[103-104],observational,many,0.356355693,0.090909091
+"Kugn & Klotz, 2003",15,1,2003,129.8,km2,18.6815,51,9,[105-106],observational,many,0.562729769,0.000519481
+"Stohlgren et al., 1999",16,1,1999,1000,m2,6.9078,40.2,-105.42,[0-10],observational,many,0.662462707,0.058823529
+"Stohlgren et al., 1999",16,2,1999,1000,m2,6.9078,42.37,-102.41,[106- ],observational,grassland,0.309519604,0.076923077
+"Stohlgren et al., 1999",16,3,1999,1,m2,0,40.2,-105.42,[0-10],observational,many,0.847955755,0.5
+"Stohlgren et al., 1999",16,4,1999,1,m2,0,42.37,-102.41,[106- ],observational,grassland,-0.662462707,1
+"Peltzer et al., 2014",17,1,2014,4,m2,1.3863,-37.46,176.19,[102-103],observational,agricultural,-1.375767657,0.2
+"Ricotta et al., 2010",18,1,2010,1,km2,13.8155,50.51,4.21,[102-103],observational,urban,1.293344672,0.006410256
+"Bangert & Huntly, 2010",19,1,2010,26,m2,3.2581,43.17,-113.49,[103-104],observational,shrubland,-0.10943478,0.022222222
+"Parker et al., 2010",20,1,2010,1,m2,0,38.53,-76.33,[10-100],observational,forest,0.549306144,0.04
+"Tanentzap et al., 2010",21,1,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.484700279,0.058823529
+"Tanentzap et al., 2010",21,2,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.522984278,0.058823529
+"Tanentzap et al., 2010",21,3,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.3884231,0.020833333
+"Tanentzap et al., 2010",21,4,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.662462707,0.037037037
+"Tanentzap et al., 2010",21,5,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.140925576,0.058823529
+"Tanentzap et al., 2010",21,6,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.576339755,0.037037037
+"Tanentzap et al., 2010",21,7,2010,1,m2,0,44.34,-76.05,[0-10],observational,forest,0.202732554,0.058823529
+"Jauni & Hyvonen, 2012",22,1,2012,0.25,km2,12.4292,64,26,[105-106],observational,agricultural,0.677666068,0.00990099
+"Jauni & Hyvonen, 2012",22,2,2012,50,m2,3.912,64,26,[105-106],observational,agricultural,0.662462707,0.001733102
+"Jauni & Hyvonen, 2012",22,3,2012,1,m2,0,64,26,[105-106],observational,agricultural,0.549306144,0.000575705
+"Von Holle, 2013",23,1,2013,400,m2,5.9915,41.29,-70.89,[104-105],observational,shrubland,0.309519604,0.018867925
+"Fuentes et al., 2013",24,1,2013,100,km2,18.4207,-30,-71,[105-106],observational,many,0.662462707,0.000903342
+"Okimura et al., 2016",25,1,2016,1,m2,0,44.06,145.11,[102-103],observational,urban,-0.173726908,0.002785515
+"Jones & Chapman, 2011",26,1,2011,1,m2,0,39.57,-75.26,[10-100],observational,forest,-0.594326311,0.045454545
+"Aguiar et al., 2006",27,1,2006,4,m2,1.3863,38.24,-7.45,[102-103],observational,wetland,0.693147181,0.001862197
+"Stohlgren et al., 2005",28,1,2005,1000,m2,6.9078,38.87,-108.43,[105-106],observational,many,0.171666664,0.001666667
+"Magee et al., 2008",29,1,2008,900,m2,6.8024,44.65,-119.38,[104-105],observational,wetland,0.31171886,0.014925373
+"Stokes et al., 2010",30,1,2010,400,m2,5.9915,-35.5,145,[102-103],observational,wetland,0.741416144,0.034482759
+"Symonds & Pither, 2012",31,1,2012,1,m2,0,49.16,-119.33,[102-103],observational,grassland,0.489727341,0.002724796
+"Symonds & Pither, 2012",31,2,2012,10,m2,2.3026,49.16,-119.33,[102-103],observational,grassland,0.107411176,0.014084507
+"Symonds & Pither, 2012",31,3,2012,100,m2,4.6052,49.16,-119.33,[102-103],observational,grassland,0.008000171,0.029411765
+"Symonds & Pither, 2012",31,4,2012,1000,m2,6.9078,49.16,-119.33,[102-103],observational,grassland,-0.062079626,0.029411765
+"Guo et al., 2001",32,1,2001,1,m2,0,34.5,-118.39,[102-103],observational,shrubland,-0.080171325,0.025641026
+"Smith et al.,1999",33,1,1999,200,m2,5.2983,39.05,-96.35,[10-100],observational,grassland,0.907644983,0.012987013
+"Stohlgren et al., 1998",34,1,1998,1,m2,0,43.39,-104.6,[105-106],observational,wetland,-0.741416144,1
+"Stohlgren et al., 1998",34,2,1998,1,m2,0,43.39,-104.6,[105-106],observational,grassland,0.161386696,1
+"Stohlgren et al., 1998",34,3,1998,1000,m2,6.9078,43.39,-104.6,[105-106],observational,wetland,-0.276863823,1
+"Stohlgren et al., 1998",34,4,1998,1000,m2,6.9078,43.39,-104.6,[105-106],observational,grassland,0.110446916,1
+"Belote et al., 2008",35,1,2008,2,ha,9.9035,37.18,-80.66,[0-10],observational,forest,0.472230804,0.25
+"Belote et al., 2008",35,2,2008,576,m2,6.3561,37.18,-80.66,[0-10],observational,forest,-0.003000009,0.25
+"Belote et al., 2008",35,3,2008,1,m2,0,37.18,-80.66,[0-10],observational,forest,0.011000444,0.25
+"Belote et al., 2008",35,4,2008,2,ha,9.9035,37.25,-80.48,[0-10],observational,forest,-0.040021354,0.25
+"Belote et al., 2008",35,5,2008,576,m2,6.3561,37.25,-80.48,[0-10],observational,forest,0.497311288,0.25
+"Belote et al., 2008",35,6,2008,1,m2,0,37.25,-80.48,[0-10],observational,forest,0.411800034,0.25
+"Belote et al., 2008",35,7,2008,576,m2,6.3561,36.77,-82.68,[0-10],observational,forest,-0.110446916,0.25
+"Belote et al., 2008",35,8,2008,2,ha,9.9035,36.89,-82.49,[0-10],observational,forest,0.161386696,0.25
+"Belote et al., 2008",35,9,2008,576,m2,6.3561,36.89,-82.49,[0-10],observational,forest,0.331647109,0.25
+"Belote et al., 2008",35,10,2008,2,ha,9.9035,37.42,-80.4,[0-10],observational,forest,0.342828254,0.25
+"Belote et al., 2008",35,11,2008,576,m2,6.3561,37.42,-80.4,[0-10],observational,forest,0.411800034,0.25
+"Belote et al., 2008",35,12,2008,1,m2,0,37.42,-80.4,[0-10],observational,forest,-0.725005088,0.25
+"Belote et al., 2008",35,13,2008,2,ha,9.9035,38.79,-80.11,[0-10],observational,forest,-1.831780823,0.5
+"Belote et al., 2008",35,14,2008,576,m2,6.3561,38.79,-80.11,[0-10],observational,forest,0.13073985,0.5
+"Belote et al., 2008",35,15,2008,1,m2,0,38.79,-80.11,[0-10],observational,forest,0.255412812,0.5
+"Belote et al., 2008",35,16,2008,2,ha,9.9035,38.66,-79.98,[0-10],observational,forest,1.945910149,0.25
+"Belote et al., 2008",35,17,2008,576,m2,6.3561,38.66,-79.98,[0-10],observational,forest,0.847955755,0.25
+"Davies et al., 2005",36,1,2005,1,m2,0,38.51,-123.3,[0-10],observational,grassland,-1.65839002,0.002624672
+"Davies et al., 2005",36,2,2005,16,m2,2.7726,38.51,-123.3,[0-10],observational,grassland,-0.847955755,0.010752688
+"Davies et al., 2005",36,3,2005,2516,m2,7.8304,38.51,-123.3,[0-10],observational,grassland,0.887183863,0.047619048
+"Davies et al., 2005",36,4,2005,23716,m2,10.0739,38.51,-123.3,[0-10],observational,grassland,0.829114038,0.111111111
+"Tomasetto et al., 2013",37,1,2013,36,m2,3.5835,-43.44,173.03,[102-103],observational,many,-0.370009475,0.002061856
+"Brummer et al., 2016",38,1,2016,1,m2,0,-43.6,172,[104-105],observational,wetland,0.334992946,0.00038625
+"Stohlgren et al.,1999",39,1,1999,1,m2,0,42.22,-107.44,[106- ],observational,grassland,-0.276863823,0.166666667
+"Stohlgren et al.,1999",39,2,1999,1000,m2,6.9078,42.22,-107.44,[106- ],observational,grassland,-0.030009005,0.166666667
+"Stohlgren et al., 2005",40,1,2005,1000,m2,6.9078,37.24,-111.41,[103-104],observational,many,0.120581028,0.002747253
+"Keeley et al., 2003",41,1,2003,1,m2,0,36.69,-118.56,[0-10],observational,grassland,0.792813632,0.006802721
+"Keeley et al., 2003",41,2,2003,1000,m2,6.9078,36.69,-118.56,[0-10],observational,grassland,1.256152812,0.5
+"Keeley et al., 2003",41,3,2003,1,m2,0,36.69,-118.56,[10-100],observational,shrubland,0.792813632,0.005076142
+"Keeley et al., 2003",41,4,2003,1000,m2,6.9078,36.69,-118.56,[10-100],observational,shrubland,1.589026915,0.142857143
+"Keeley et al., 2003",41,5,2003,1,m2,0,36.69,-118.56,[102-103],observational,forest,0.266108407,0.000486145
+"Keeley et al., 2003",41,6,2003,1000,m2,6.9078,36.69,-118.56,[102-103],observational,forest,0.810743125,0.01
+"Suding & Gross, 2006",42,1,2006,0.25,m2,-1.3863,42.17,-85.19,[0-10],observational,grassland,0.181982689,0.008928571
+"Harrison et al., 2006",43,1,2006,1000,m2,6.9078,37,-120,[103-104],observational,many,0.120581028,0.009433962
+"Gilbert & Lechowicz, 2005",44,1,2005,50,m2,3.912,45.31,-73.08,[0-10],observational,forest,0.810743125,0.015625
+"Gilbert & Lechowicz, 2005",44,2,2005,10,m2,2.3026,45.31,-73.08,[0-10],observational,forest,0.647522845,0.015625
+"Davies et al., 2007",45,1,2007,1,m2,0,37,-120,[105-106],observational,many,1.421925871,0.000656599
+"Davies et al., 2007",45,2,2007,1000,m2,6.9078,37,-120,[105-106],observational,many,0.928727364,0.009433962
+"Davies et al., 2007",45,3,2007,4000,m2,8.294,37,-120,[105-106],observational,many,0.662462707,0.05
+"Capers et al., 2007",46,1,2007,3,m2,1.0986,41.6,-72.7,[104-105],observational,wetland,0.192337169,0.000177274
+"Stohlgren et al., 2006",47,1,2006,1,m2,0,42.42,-105.36,[106- ],observational,many,-0.255412812,0.029411765
+"Stohlgren et al., 2006",47,2,2006,10,m2,2.3026,42.42,-105.36,[106- ],observational,many,-0.234189467,0.029411765
+"Stohlgren et al., 2006",47,3,2006,100,m2,4.6052,42.42,-105.36,[106- ],observational,many,-0.266108407,0.029411765
+"Stohlgren et al., 2006",47,4,2006,1000,m2,6.9078,42.42,-105.36,[106- ],observational,many,-0.090244188,0.029411765
+"Chaneton et al., 2005",48,1,2005,0.25,ha,7.824,-36.53,-59.45,[104-105],observational,grassland,0.42364893,0.001340483
+"Abella et al., 2013",49,1,2013,400,m2,5.9915,37.37,-112.1,[102-103],observational,many,0.050041729,0.00248139
+"Richardson et al., 2005",50,1,2005,675,km2,20.3302,-30,25,[106- ],observational,many,0.950479381,0.000627353
+"Tabacchi et al., 2005",51,1,2005,4,m2,1.3863,43.88,1.22,[0-10],observational,wetland,0.122610746,0.000401123
+"Tabacchi et al., 2005",51,2,2005,4,m2,1.3863,43.92,1.19,[0-10],observational,wetland,0.260753317,0.002096436
+"Tabacchi et al., 2005",51,3,2005,4,m2,1.3863,43.88,1.22,[0-10],observational,wetland,0.123625981,0.000347584
+"Tabacchi et al., 2005",51,4,2005,4,m2,1.3863,43.88,1.22,[0-10],observational,wetland,0.155235044,0.000949668
+"Tabacchi et al., 2005",51,5,2005,4,m2,1.3863,43.84,1.25,[0-10],observational,wetland,0.25008653,0.002624672
+"Bruno et al., 2004",52,1,2004,0.25,m2,-1.3863,41.36,-71.21,[102-103],observational,wetland,0.407091126,0.047619048
+"Souza et al., 2011",53,1,2011,5,m2,1.6094,35.58,-84.17,[10-100],observational,agricultural,0.376885901,0.021276596
+"Lavoie et al., 2003",54,1,2003,25,m2,3.2189,46.58,-71.77,[104-105],observational,wetland,0.497311288,0.25
+"Perelman et al., 2007",55,1,2007,0.25,ha,7.824,-36.53,-59.45,[104-105],observational,grassland,0.536060337,0.001340483
+"Perelman et al., 2007",55,2,2007,2.5,m2,0.9163,-37.32,-60.49,[0-10],observational,grassland,1.47221949,0.01754386
+"Freeman et al., 2007",56,1,2007,100,m2,4.6052,39.59,-113.61,[106- ],observational,forest,2.646652412,0.25
+"Celesti-Grapow et al., 2006",57,1,2006,1.6,km2,11.9829,41.54,12.29,[102-103],observational,many,0.522984278,0.005347594
+"Cleland et al., 2004",58,1,2004,0.3,m2,-1.204,45.4,-93.2,[10-100],observational,agricultural,0.370009475,0.001996008
+"Cleland et al., 2004",58,2,2004,1,m2,0,32.62,-106.74,[102-103],observational,grassland,0.201691104,0.000378358
+"Cleland et al., 2004",58,3,2004,1,m2,0,42.24,-85.24,[10-100],observational,agricultural,0.370009475,0.004329004
+"Cleland et al., 2004",58,4,2004,10,m2,2.3026,39.05,-96.35,[10-100],observational,grassland,0.126673217,0.0013947
+"Williams et al., 2005",59,1,2005,100,km2,18.4207,37,-120,[105-106],observational,many,0.549306144,0.004405286
+"Fridley et al., 2006",60,1,2006,1074,km2,20.7947,39.09,-103.6,[106- ],observational,many,0.792813632,0.001675042
+"Keeley et al., 2005",61,1,2005,1000,m2,6.9078,34,-117,[10-100],observational,shrubland,0.320545409,0.011494253
+"Deutschewitz et al., 2003",62,1,2003,32,km2,17.2812,51.5,12.15,[103-104],observational,many,1.013000009,0.008196721
+"Chown et al., 2005",63,1,2005,100,km2,18.4207,-57.38,2.41,[106- ],observational,many,1.375767657,0.004694836
+"Marini et al., 2009",64,1,2009,35.7,km2,17.3907,46.26,11.1,[103-104],observational,many,0.792813632,0.006535948
+"Lososov et al., 2012",65,1,2012,1,ha,9.2103,49.49,11.97,[106- ],observational,urban,0.411800034,0.004524887
+"Bartomeus et al., 2012",66,1,2012,100,km2,18.4207,41.49,1.28,[104-105],observational,many,0.342828254,0.003424658
+"Carboni et al., 2010",67,1,2010,35,km2,17.3709,41.67,12.3,[103-104],observational,wetland,0.549306144,0.023255814
+"Chen et al., 2010",68,1,2010,5,m2,1.6094,40,-89,[105-106],observational,wetland,0.363166365,0.01
+"Chen et al., 2010",68,2,2010,1,m2,0,40,-89,[105-106],observational,wetland,0.13990573,0.001953125
+"Chen et al., 2010",68,3,2010,0.25,m2,-1.3863,40,-89,[105-106],observational,wetland,-0.162413138,0.000486145
+"Cully et al., 2003",69,1,2003,10,m2,2.3026,37.6,-93.25,[0-10],observational,grassland,0.488468431,0.037037037
+"Cully et al., 2003",69,2,2003,10,m2,2.3026,37.6,-93.25,[0-10],observational,grassland,0.380336888,0.037037037
+"Cully et al., 2003",69,3,2003,10,m2,2.3026,43.5,-91.11,[0-10],observational,grassland,0.546643022,0.037037037
+"Cully et al., 2003",69,4,2003,10,m2,2.3026,43.5,-91.11,[0-10],observational,grassland,0.585982458,0.037037037
+"Cully et al., 2003",69,5,2003,10,m2,2.3026,44,-96.19,[0-10],observational,grassland,-0.577711347,0.037037037
+"Cully et al., 2003",69,6,2003,300,m2,5.7038,41.34,-94.26,[105-106],observational,grassland,0.192337169,0.045454545
+"Meiners et al., 2002",70,1,2002,1,m2,0,40.5,-74.57,[0-10],observational,agricultural,0.615518437,0.005291005
+"Meiners et al., 2002",70,2,2002,1,m2,0,40.5,-74.57,[0-10],observational,agricultural,0.147050852,0.003717472
+"Matthews et al., 2009",71,1,2009,0.25,m2,-1.3863,40,-89,[105-106],observational,wetland,0.234189467,0.000895255
+"Lilley & Vellend, 2009",72,1,2009,1,m2,0,48.26,-123.22,[0-10],observational,grassland,0.006000072,0.020408163
+"Compagnoni & Halpern, 2009",73,1,2009,1,m2,0,44.54,-122.12,[0-10],observational,forest,-0.140925576,0.013888889
+"Boughton et al., 2011",74,1,2011,15,m2,2.7081,27.09,-81.11,[10-100],observational,wetland,-0.647522845,0.058823529
+"Harrison et al., 2016",75,1,2016,1,m2,0,38.5,-122.23,[0-10],observational,grassland,-0.276863823,0.00952381
+"Hill & Fischer, 2014",76,1,2014,1,m2,0,46.86,-123.04,[0-10],observational,grassland,0.153187103,0.010309278
+"Hill & Fischer, 2014",76,2,2014,10,m2,2.3026,46.86,-123.04,[0-10],observational,grassland,0.659454094,0.058823529
+"Hill & Fischer, 2014",76,3,2014,100,m2,4.6052,46.86,-123.04,[0-10],observational,grassland,0.650490389,0.142857143
+"Hill & Fischer, 2014",76,4,2014,1000,m2,6.9078,46.86,-123.04,[0-10],observational,grassland,1.129943721,0.142857143
+"Gong et al., 2013",77,1,2013,1720,m2,7.4501,22.33,114.06,[102-103],observational,urban,1.643786178,0.142857143
+"Gong et al., 2013",77,2,2013,1345,m2,7.2041,22.33,114.06,[102-103],observational,forest,0.579084903,0.033333333
+"Gong et al., 2013",77,3,2013,1911,m2,7.5554,22.33,114.06,[102-103],observational,urban,1.477507746,0.025
+"Satterlee, 2012",78,1,2012,1.32,ha,9.488,42.26,-78.52,[0-10],observational,wetland,-0.040021354,0.071428571
+"Crall et al., 2006",79,1,2006,1000,m2,6.9078,37.24,-111.41,[103-104],observational,many,0.411800034,0.066666667
+"Brandt & Seabloom, 2011",80,1,2011,2,m2,0.6931,36.39,-121.24,[103-104],observational,grassland,0.365443754,0.166666667
+"Abella et al., 2012",81,1,2012,1,m2,0,33.55,-112.89,[103-104],observational,forest,0.775298706,0.001013171
+"Abella et al., 2012",81,2,2012,500,m2,6.2146,33.55,-112.89,[103-104],observational,forest,0.435611223,0.015873016
+"Kalkhan et al., 2007",82,1,2007,225,m2,5.4161,40.2,-105.42,[102-103],observational,many,0.576339755,0.01754386
+"MacDougall et al., 2006",83,1,2006,1,m2,0,49.3,-125.3,[102-103],observational,grassland,-0.070114671,0.005524862
+"Morgan, 1998",84,1,1998,1,m2,0,-37.35,144.44,[0-10],observational,grassland,-0.447692024,0.009345794
+"Brooks et al., 2013",85,1,2013,180,m2,5.193,25.37,-80.26,[103-104],observational,forest,-0.647522845,0.1
+"Stohlgren et al., 2001",86,1,2001,1000,m2,6.9078,37.24,-111.41,[103-104],observational,many,0.213171347,0.010638298
+"Huntly et al., 2011",87,1,2011,25,m2,3.2189,42.78,-112.86,[102-103],observational,shrubland,0.410621192,0.125
+"Huntly et al., 2011",87,2,2011,25,m2,3.2189,43.46,-113.56,[103-104],observational,shrubland,0.275785504,0.125
+"Kumar et al., 2006",88,1,2006,1000,m2,6.9078,40.2,-105.42,[102-103],observational,many,0.632833187,0.013157895
+"Pysek et al., 1998",89,1,1998,124,km2,18.6358,50.87,14.39,[105-106],observational,urban,0.928727364,0.019607843
+"Sax et al., 2002",90,1,2002,400,m2,5.9915,34.03,-118.14,[10-100],observational,shrubland,0.522984278,0.026315789
+"Sax et al., 2002",90,2,2002,400,m2,5.9915,-33.01,-71.38,[10-100],observational,shrubland,0.497311288,0.058823529
+"Sax et al., 2002",90,3,2002,100,m2,4.6052,34.03,-118.14,[10-100],observational,shrubland,0.647522845,0.043478261
+"Sax et al., 2002",90,4,2002,100,m2,4.6052,-33.01,-71.38,[10-100],observational,shrubland,0.758173745,0.066666667
+"Sax et al., 2002",90,5,2002,25,m2,3.2189,-33.01,-71.38,[10-100],observational,shrubland,0.632833187,0.066666667
+"Sax et al., 2002",90,6,2002,1,m2,0,-33.01,-71.38,[10-100],observational,shrubland,0.42364893,0.066666667
+"Corenblit et al., 2014",91,1,2014,4,m2,1.3863,42.29,2.45,[0-10],observational,wetland,1.098612289,0.027027027
+"Corenblit et al., 2014",91,2,2014,4,m2,1.3863,42.29,2.45,[0-10],observational,wetland,0.618381314,0.03125
+"Corenblit et al., 2014",91,3,2014,4,m2,1.3863,42.31,2.5,[0-10],observational,wetland,1.375767657,0.037037037
+"Corenblit et al., 2014",91,4,2014,4,m2,1.3863,42.31,2.5,[0-10],observational,wetland,1.127029026,0.037037037
+"Martin-Fores et al., 2016",92,1,2016,0.25,m2,-1.3863,-35.38,-71.31,[102-103],observational,grassland,-0.280102561,0.022222222
+"McIntyre et al., 1988",93,1,1988,50,m2,3.912,-32.9,147.1,[104-105],observational,wetland,-0.179916485,0.005681818
+"McIntyre & Lavorel, 1994",94,1,1994,30,m2,3.4012,-30.15,151.64,[104-105],observational,grassland,-1.65839002,0.5
+"Rojas et al., 2011",95,1,2011,400,m2,5.9915,-39,-72,[102-103],observational,forest,-0.110446916,0.111111111
+"Stohlgren et al., 2000",96,1,2000,1000,m2,6.9078,40.2,-105.42,[103-104],observational,forest,1.293344672,0.083333333
+"Fornwalt et al., 2010",97,1,2010,1000,m2,6.9078,39.11,-105.19,[0-10],observational,forest,0.928727364,0.014925373
+"Boutin et al., 2008",98,1,2008,10,m2,2.3026,44.18,-78.19,[103-104],observational,agricultural,0.266108407,0.037037037
+"Rose et al., 1997",99,1,1997,4,m2,1.3863,-33.51,151.14,[105-106],observational,shrubland,-0.599930345,0.004504505
+"Schulz et al., 2013",100,1,2013,168,m2,5.124,42,-73,[106- ],observational,forest,0.13073985,0.000236742
+"Belote et al., 2010",101,1,2010,141.3,m2,4.9509,35.93,-112.81,[104-105],observational,wetland,0.604155603,0.04
