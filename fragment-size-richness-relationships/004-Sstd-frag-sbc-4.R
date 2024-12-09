@@ -66,6 +66,7 @@ for(i in 1:length(frag_results4$fits[ok_frag4])){
 # remove the some more problematic fits
 ok_frag4 <- ok_frag4[max_rhat4 < 1.05]
 
+frag_sbc_results_4 <- frag_results4[ok_frag4]
 
 # plot diagnostics
 label4 <- as_labeller(c("b_Intercept" = "beta[0]",
@@ -76,15 +77,15 @@ label4 <- as_labeller(c("b_Intercept" = "beta[0]",
                         "sd_dataset_label__sigma_Intercept" = "sigma[0]^sigma"), 
                       default = label_parsed)
 
-frag_sbc_results_4 <- frag_results4[ok_frag4]
+
 
 pdf(paste0(wkdir, 'fragment-size-richness-relationships/figures/frag_sbc4.pdf'),
     width = 7, height = 5)
 
-plot_rank_hist(frag_results4[ok_frag4],
-               variables = c("b_Intercept", "b_c.lfs",
+plot_rank_hist(frag_sbc_results_4,
+               variables = c("b_c.lfs",#"b_Intercept", 
                              "b_sigma_Intercept",
-                             "sd_dataset_label__Intercept",
+                             # "sd_dataset_label__Intercept",
                              "sd_dataset_label__c.lfs", 
                              "sd_dataset_label__sigma_Intercept")) +
   facet_wrap(~factor(variable, 
@@ -95,10 +96,10 @@ plot_rank_hist(frag_results4[ok_frag4],
                        "sd_dataset_label__sigma_Intercept")),
              labeller = label4)
 
-plot_coverage(frag_results4[ok_frag4],
-              variables = c("b_Intercept", "b_c.lfs",
+plot_coverage(frag_sbc_results_4,
+              variables = c("b_c.lfs",#"b_Intercept", 
                             "b_sigma_Intercept",
-                            "sd_dataset_label__Intercept",
+                            # "sd_dataset_label__Intercept",
                             "sd_dataset_label__c.lfs", 
                             "sd_dataset_label__sigma_Intercept")) +
   facet_wrap(~factor(variable, 
@@ -109,10 +110,10 @@ plot_coverage(frag_results4[ok_frag4],
                        "sd_dataset_label__sigma_Intercept")),
              labeller = label4)
 
-plot_ecdf(frag_results4[ok_frag4],
-          variables = c("b_Intercept", "b_c.lfs",
+plot_ecdf(frag_sbc_results_4,
+          variables = c("b_c.lfs",#"b_Intercept", 
                         "b_sigma_Intercept",
-                        "sd_dataset_label__Intercept",
+                        # "sd_dataset_label__Intercept",
                         "sd_dataset_label__c.lfs", 
                         "sd_dataset_label__sigma_Intercept")) +
   facet_wrap(~factor(variable, 
@@ -123,10 +124,10 @@ plot_ecdf(frag_results4[ok_frag4],
                        "sd_dataset_label__sigma_Intercept")),
              labeller = label4)
 
-plot_sim_estimated(frag_results4[ok_frag4],
-                   variables = c("b_Intercept", "b_c.lfs",
+plot_sim_estimated(frag_sbc_results_4,
+                   variables = c("b_c.lfs",#"b_Intercept", 
                                  "b_sigma_Intercept",
-                                 "sd_dataset_label__Intercept",
+                                 # "sd_dataset_label__Intercept",
                                  "sd_dataset_label__c.lfs", 
                                  "sd_dataset_label__sigma_Intercept")) +
   facet_wrap(~factor(variable, 
