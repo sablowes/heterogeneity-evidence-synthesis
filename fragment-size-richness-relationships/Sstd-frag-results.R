@@ -1,18 +1,19 @@
 # standardized_richness ~ f(fragment size) results of location-scale models
+source('~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-evidence-synthesis/init-dir.R')
 
-# model fits and k-fold cv
+# model fits
 load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m1-m2.Rdata'))
 load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m3.Rdata'))
 load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m4.Rdata'))
 load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m5.Rdata'))
      
-# kfold
+# stratified kfold (k = 10)
 load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd_frag_kf10-4725045.Rdata'))
 
 # leave-one-group-out cv
-load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-loo-cv10g-1-4418331.Rdata'))
-load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-loo-cv10g-2-4418336.Rdata'))
-load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-loo-cv10g-3-4418334.Rdata'))
+load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-logo-cv10g-1-4418331.Rdata'))
+load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-logo-cv10g-2-4418336.Rdata'))
+load(paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/sstd-logo-cv10g-3-4418334.Rdata'))
 
 
 # kfold
@@ -183,7 +184,7 @@ cowplot::plot_grid(ab_panels,
                                       nrow = 1),
                    nrow = 2)
 
-ggsave('~/Dropbox/1current/evidence-synthesis-heterogeneity/figures/Fig2.pdf',
+ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
        width = 180, height = 180, units = 'mm')
 
 # want to check that all models support ecosystem decay for 
@@ -237,7 +238,7 @@ bind_rows(
        y = 'Model') +
   theme_minimal() 
 
-ggsave('~/Dropbox/1current/evidence-synthesis-heterogeneity/figures/FigS2.pdf',
+ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-decay.pdf'),
        width = 200, height = 100, units = 'mm')
 
 # plot correlations from model 2.5
@@ -290,7 +291,7 @@ corr_post %>%
         legend.position = 'top')
 
 
-ggsave('~/Dropbox/1current/evidence-synthesis-heterogeneity/figures/FigS3.pdf',
+ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-correlations.pdf'),
        width = 290, height = 200, units = 'mm')
 
 # check interpretation, calculate study-level slopes
@@ -320,5 +321,5 @@ study_slopes %>%
                             beta[1]^sigma + beta[`1i`]^sigma, ')'))) +
   theme_minimal()
 
-ggsave('~/Dropbox/1current/evidence-synthesis-heterogeneity/figures/FigS4.pdf',
+ggsave(paste0(wkdir,'fragment-size-richness-relationships/figures/FigSx-slope-slope.pdf'),
        width = 130, height = 130, units = 'mm')

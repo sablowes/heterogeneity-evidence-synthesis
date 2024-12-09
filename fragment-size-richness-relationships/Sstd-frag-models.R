@@ -57,10 +57,11 @@ Sstd_lognorm_fragSize_sigma_fs <- brm(bf(S_std_mean ~ c.lfs + (c.lfs | dataset_l
                                                 prior(normal(0,1), class = b),
                                                 prior(normal(0,1), class = sd),
                                                 prior(normal(0,1), class = sd, dpar = sigma),
-                                                prior(normal(0,1), class = Intercept, dpar = sigma)),
+                                                prior(normal(0,1), class = Intercept, dpar = sigma),
+                                                prior(normal(0,1), class = b, dpar = sigma)),
                                       cores = 4, chains = 4,
                                       iter = 4000, thin = 2,
-                                      control = list(adapt_delta = 0.95),
+                                      control = list(adapt_delta = 0.952),
                                       backend = 'cmdstanr')
 
 save(Sstd_lognorm_fragSize_sigma_fs,
@@ -96,10 +97,11 @@ Sstd_lognorm_fragSize_sigma_fs_cor <- brm(bf(S_std_mean ~ c.lfs + (c.lfs | p | d
                                                     prior(normal(0,1), class = b),
                                                     prior(normal(0,1), class = sd),
                                                     prior(normal(0,1), class = sd, dpar = sigma),
-                                                    prior(normal(0,1), class = Intercept, dpar = sigma)),
-                                          cores = 4, chains = 4,
-                                          iter = 4000, thin = 2,
-                                          control = list(adapt_delta = 0.95),
+                                                    prior(normal(-1,1), class = Intercept, dpar = sigma),
+                                                    prior(normal(0,1), class = b, dpar = sigma)),
+                                          cores = 8, chains = 8,
+                                          iter = 2000, thin = 2,
+                                          control = list(adapt_delta = 0.9),
                                           backend = 'cmdstanr')
 
 save(Sstd_lognorm_fragSize_sigma_fs_cor,
