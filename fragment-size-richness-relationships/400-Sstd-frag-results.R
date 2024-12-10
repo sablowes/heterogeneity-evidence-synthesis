@@ -237,9 +237,10 @@ bind_rows(
                                                log(sigma), ' = 1 + (1 |', rho,'| Study)')),
                               expression(paste(bold('Model 2.5: '), log(sigma),
                                                ' = log(fragment size) + (log(fragment size) |', rho,'| Study)')))) +
-  labs(x = 'Standardized species richness ~ fragment size slope (average)',
+  labs(x = expression(paste('Fragment size slope (', beta[1], ')')),
        y = 'Model') +
-  theme_minimal() 
+  theme_minimal() +
+  theme(axis.title.x = element_text())
 
 ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-decay.pdf'),
        width = 200, height = 100, units = 'mm')
