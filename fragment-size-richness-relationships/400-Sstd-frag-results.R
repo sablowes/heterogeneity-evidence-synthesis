@@ -189,7 +189,7 @@ cowplot::plot_grid(ab_panels,
                    nrow = 2)
 
 ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
-       width = 180, height = 180, units = 'mm')
+       width = 200, height = 180, units = 'mm')
 
 # want to check that all models support ecosystem decay for 
 # standardized species richness
@@ -228,16 +228,15 @@ bind_rows(
                               'm3',
                               'm4',
                               'm5'),
-                   labels = c(expression(paste('homoscedastic ', sigma)),
-                              expression(paste(log(sigma),
+                   labels = c(expression(paste(bold('Model 2.1: '), sigma, ' ~ 1')),
+                              expression(paste(bold('Model 2.2: '), log(sigma),
                                                ' = 1 + (1 | Study)')),
-                              expression(paste(log(sigma),
+                              expression(paste(bold('Model 2.3: '), log(sigma),
                                                ' = log(fragment size) + (log(fragment size) | Study)')),
-                              expression(paste(log(sigma),
-                                               ' = 1 + (1 |', rho,'| Study)')),
-                              expression(paste(log(sigma),
-                                               ' = log(fragment size) + (log(fragment size) |', rho,
-                                               '| Study)')))) +
+                              expression(paste(bold('Model 2.4: '),
+                                               log(sigma), ' = 1 + (1 |', rho,'| Study)')),
+                              expression(paste(bold('Model 2.5: '), log(sigma),
+                                               ' = log(fragment size) + (log(fragment size) |', rho,'| Study)')))) +
   labs(x = 'Standardized species richness ~ fragment size slope (average)',
        y = 'Model') +
   theme_minimal() 
