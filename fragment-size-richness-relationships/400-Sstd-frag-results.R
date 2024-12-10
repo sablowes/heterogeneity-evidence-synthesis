@@ -62,15 +62,19 @@ bind_rows(
                               'm3',
                               'm4',
                               'm5'),
-                   labels = c(expression(paste('Homoscedastic ', sigma)),
-                              expression(paste(log(sigma), ' = 1 + (1 | Study)')),
-                              expression(paste(log(sigma), ' = log(fragment size) + (log(fragment size) | Study)')),
-                              expression(paste(log(sigma), ' = 1 + (1 |', rho,'| Study)')),
-                              expression(paste(log(sigma), ' = log(fragment size) + (log(fragment size) |', rho,'| Study)')))) +
+                   labels = c(expression(paste(bold('Model 2.1: '), sigma, ' ~ 1')),
+                              expression(paste(bold('Model 2.2: '), log(sigma),
+                                               ' = 1 + (1 | Study)')),
+                              expression(paste(bold('Model 2.3: '), log(sigma),
+                                               ' = log(fragment size) + (log(fragment size) | Study)')),
+                              expression(paste(bold('Model 2.4: '),
+                                               log(sigma), ' = 1 + (1 |', rho,'| Study)')),
+                              expression(paste(bold('Model 2.5: '), log(sigma),
+                                               ' = log(fragment size) + (log(fragment size) |', rho,'| Study)')))) +
   scale_color_manual(values = c('richness' = 'black'),
                      guide = 'none') +
-  labs(x = 'Model for residuals',
-       y = expression(paste(Delta, bar(elpd[kfold])))) +
+  labs(x = 'Model',
+       y = expression(paste(Delta, bar(elpd)))) +
   coord_flip() + 
   theme_minimal() +
   theme(panel.border = element_rect(colour = 'black', fill = NA),
