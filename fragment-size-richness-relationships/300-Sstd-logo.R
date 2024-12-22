@@ -18,7 +18,7 @@ cv10g_sstd_sigma <- kfold(x = Sstd_lognorm_fragSize_sigma,
                                   group = 'dataset_label')
 # model 2.3
 cv10g_sstd_sigma_fs <- kfold(x = Sstd_lognorm_fragSize_sigma_fs,
-                             group = 'dataset_label',)
+                             group = 'dataset_label')
 # model 2.4
 cv10g_sstd_sigma_cor <- kfold(x = Sstd_lognorm_fragSize_sigma_cor,
                                       group = 'dataset_label')
@@ -30,5 +30,5 @@ save(cv10g_sstd,
      cv10g_sstd_sigma,
      cv10g_sstd_sigma_fs,
      cv10g_sstd_sigma_cor,
-     cv10g_sstd_sigma_fs_cor
+     cv10g_sstd_sigma_fs_cor,
      file = Sys.getenv('OFILE'))
