@@ -13,52 +13,58 @@ peng_template_data3a <- tibble(z = dat$z,
                               var_z = dat$var_z,
                               x = dat$ln_Grain,
                               Extent = dat$Extent,
-                              Study = dat$Study,
-                              Case = dat$Case)
+                              Study = dat$Study)
 
 # priors are needed to fully define the data generating process
 peng_priors3a <- prior(normal(0.13,0.05), class = "Intercept") + # mu
   prior(normal(0.04,0.02), class = 'b') +
   prior(normal(-1,1), class = b, dpar = sigma) + 
-  prior(normal(0,0.2), class = 'sd', lb = 0)  
+  prior(normal(0,0.2), class = sd, group = Study, lb = 0)
 
 # use brms to simulate data (with same model as Peng et al. meta-regression)
-peng_generator3a <- SBC::SBC_generator_brms(bf(z | se(var_z, sigma = TRUE) ~ x + (1 | Study), 
-                                              sigma ~ 0 + Extent),
-                                           data = peng_template_data3a, 
+peng_generator3a <- SBC::SBC_generator_brms(bf(z | se(sqrt(var_z), sigma = TRUE) ~ x + 
+                                                 (1 | Study),
+                                               sigma ~ 0 + Extent),
+                                           data = peng_template_data3a,
                                            prior = peng_priors3a, 
-                                           thin = 50, warmup = 10000, refresh = 2000)
+                                           thin = 100, warmup = 10000, 
+                                           refresh = 2000)
 
 # generate enough datasets to discover problems if they exist
 peng_datasets3a <- generate_datasets(peng_generator3a, 200)
 
 # backend required for sbc: these are the models fit to the simulated data 
 peng_backend3a <- SBC_backend_brms_from_generator(peng_generator3a, 
-                                                 chains = 4, 
+                                                 chains = 4, thin = 1,
                                                  prior = c(prior(normal(0.3,1), class = Intercept),
                                                            prior(normal(0,1), class = b),
                                                            prior(normal(0,1), class = b, dpar = sigma),
                                                            prior(normal(0,1), class = sd)),
+                                                 control = list(adapt_delta = 0.99),
                                                  warmup = 1000, iter = 2000)
 # do sbc
 peng_results3a <- compute_SBC(peng_datasets3a, peng_backend3a)
 
 # keep fits with no divergent transitions
 peng_ok3a <- peng_results3a$backend_diagnostics %>% 
-  filter(n_divergent==0) %>% 
+  filter(n_divergent<10) %>% 
   pull(sim_id)
 
-peng_results3a$default_diagnostics[peng_ok3a,] %>% 
-  pull(max_rhat) %>% 
-  hist
-peng_ok3a <- 
-  peng_results3a$default_diagnostics[peng_ok3a,] %>% 
-  filter(max_rhat < 1.05) %>% 
-  pull(sim_id)
+# all fits have NAs in the Rhats (due to the fixed sigma parameter)
+# want to find fits with rhats > 1.05
+max_rhat3 <- c()
+for(i in 1:length(peng_results3a$fits[peng_ok3a])){
+  print(i)
+  max_rhat3[i] <- max(rhat(peng_results3a$fits[peng_ok3a][[i]]), na.rm = TRUE)
+}
 
-peng_results3a$fits[[1]] %>% variables
+hist(max_rhat3)
+
+peng_ok3a <- peng_ok3a[max_rhat3 < 1.05]
+length(peng_ok3a)
 
 # some visual diagnostics
+# peng_results3a$fits[[1]] %>% variables
 labels <- as_labeller(c("Intercept" = "beta[0]",
                         "b_x" = "beta[1]",
                         "sd_Study__Intercept" = "tau",
@@ -96,7 +102,7 @@ plot_rank_hist(peng_results3a[peng_ok3a],
                                 "b_sigma_Extent106M")),
                      labeller = labels)
 
-plot_coverage_diff(peng_sbc_results_3a,
+plot_coverage_diff(peng_results3a[peng_ok3a],
               variables = c("Intercept", "b_x", 
                             "b_sigma_Extent0M10",
                             "b_sigma_Extent10M100",
@@ -168,5 +174,5 @@ print(object.size(peng_results3a[peng_ok3a]), units = "Mb")
 
 peng_sbc_results_3a <- peng_results3a[peng_ok3a]
 
-save(peng_sbc_results_3,
+save(peng_sbc_results_3a,
      file = paste0(wkdir, '../model_fits/sbc-results/peng_sbc_results_goodfits_3a.Rdata'))

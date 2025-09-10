@@ -15,14 +15,16 @@ peng_m1 <- brm(z | se(sqrt(var_z)) ~ ln_Grain + (1 | Study / Case),
                     prior(normal(0,1), class = b),
                     prior(normal(0,1), class = sd)),
           cores = 4, chains = 4,
-          save_pars = save_pars(all = TRUE))
+          backend = 'cmdstanr')
 
+plan(multisession, workers = 8)
 peng_m1_kfold <- kfold(peng_m1,
                        folds = 'stratified',
                        group = 'Study', k = 10)
 
 save(peng_m1, peng_m1_kfold,
      file = paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m1.Rdata'))
+
 
 # model 1.2: sigma (i.e., parameter associated with scale) as a function of grain, 
 peng_sigma_linear <- brm(bf(z | se(sqrt(var_z), sigma = TRUE) ~ ln_Grain + (1 | Study),
@@ -34,7 +36,8 @@ peng_sigma_linear <- brm(bf(z | se(sqrt(var_z), sigma = TRUE) ~ ln_Grain + (1 | 
                                    prior(normal(0,1), class = sd)),
                          data = dat,
                          cores = 4, chains = 4,
-                         control = list(adapt_delta = 0.95),
+                         control = list(adapt_delta = 0.99),
+                         backend = 'cmdstanr',
                          save_pars = save_pars(all = TRUE))
 
 plan(multisession, workers = 8)
@@ -79,6 +82,7 @@ peng_sigma_study <- brm(bf(z | se(sqrt(var_z), sigma = TRUE) ~ ln_Grain + (1 | S
           data = dat,
           cores = 4, chains = 4,
           control = list(adapt_delta = 0.99),
+          backend = 'cmdstanr',
           save_pars = save_pars(all = TRUE))
 
 plan(multisession, workers = 8)
@@ -88,32 +92,3 @@ peng_sigma_study_kfold <- kfold(peng_sigma_study,
 
 save(peng_sigma_study, peng_sigma_study_kfold,
      file = paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m4.Rdata'))
-
-
-# grain size as a predictor of case-level varying 
-# intercepts (omega)
-# adapted from: 
-# https://discourse.mc-stan.org/t/brms-hacking-linear-predictors-for-random-effect-standard-deviations/34162?u=martinmodrak
-# this is akin to existing location-scale models for meta-analysis
-# (e.g., Williams et al. 2021, Viechtbauer & Lopez-Lopez 2022, Rodriguez et al. 2023)
-peng_sd_linear <- brm(bf(z | se(sqrt(var_z)) ~ muy + vint1 + exp(logphi) * vint2,
-                         muy ~ ln_Grain,
-                         vint1 ~ 0 + (1 | Study),
-                         logphi ~ ln_Grain,
-                         vint2 ~ 0 + (1 | Study:Case),
-                         nl = TRUE),
-                      data = dat,
-                      prior = c(prior(normal(0,1), class = b, nlpar = logphi),
-                                prior(normal(0.3,1), class = b, coef = Intercept, nlpar = muy),
-                                prior(normal(0,1), class = b, coef = ln_Grain, nlpar = muy),
-                                prior(normal(0,1), class = sd, nlpar = vint1),
-                                prior(constant(1), class = sd, nlpar = vint2)),
-                      cores = 4, chains = 4)
-
-peng_sd_linear_kfold <- kfold(peng_sd_extent,
-                              folds = 'stratified',
-                              group = 'Study',
-                              k = 10)
-
-save(peng_sd_linear, peng_sd_linear_kfold,
-     file = paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m5-sd-linear.Rdata'))

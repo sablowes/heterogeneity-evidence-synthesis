@@ -68,13 +68,15 @@ ok_frag4 <- ok_frag4[max_rhat4 < 1.05]
 
 frag_sbc_results_4 <- frag_results4[ok_frag4]
 
+
 # plot diagnostics
 label4 <- as_labeller(c("b_Intercept" = "beta[0]",
                         "b_c.lfs" = "beta[1]",
                         "sd_dataset_label__Intercept" = "sigma[0]",
                         "sd_dataset_label__c.lfs" = "sigma[1]",
                         "b_sigma_Intercept" = "beta[0]^sigma",
-                        "sd_dataset_label__sigma_Intercept" = "sigma[0]^sigma"), 
+                        "sd_dataset_label__sigma_Intercept" = "sigma[0]^sigma",
+                        "cor_dataset_label__Intercept__c.lfs" = "rho[sigma[0]~sigma[1]]"), 
                       default = label_parsed)
 
 
@@ -96,32 +98,36 @@ plot_rank_hist(frag_sbc_results_4,
                        "sd_dataset_label__sigma_Intercept")),
              labeller = label4)
 
-plot_coverage(frag_sbc_results_4,
+plot_coverage_diff(frag_sbc_results_4,
               variables = c("b_c.lfs",#"b_Intercept", 
                             "b_sigma_Intercept",
                             # "sd_dataset_label__Intercept",
                             "sd_dataset_label__c.lfs", 
-                            "sd_dataset_label__sigma_Intercept")) +
+                            "sd_dataset_label__sigma_Intercept",
+                            "cor_dataset_label__Intercept__c.lfs")) +
   facet_wrap(~factor(variable, 
                      c("b_Intercept", "b_c.lfs",
                        "sd_dataset_label__Intercept",
                        "sd_dataset_label__c.lfs", 
                        "b_sigma_Intercept",
-                       "sd_dataset_label__sigma_Intercept")),
+                       "sd_dataset_label__sigma_Intercept",
+                       "cor_dataset_label__Intercept__c.lfs")),
              labeller = label4)
 
-plot_ecdf(frag_sbc_results_4,
+plot_ecdf_diff(frag_sbc_results_4,
           variables = c("b_c.lfs",#"b_Intercept", 
                         "b_sigma_Intercept",
                         # "sd_dataset_label__Intercept",
                         "sd_dataset_label__c.lfs", 
-                        "sd_dataset_label__sigma_Intercept")) +
+                        "sd_dataset_label__sigma_Intercept",
+                        "cor_dataset_label__Intercept__c.lfs")) +
   facet_wrap(~factor(variable, 
                      c("b_Intercept", "b_c.lfs",
                        "sd_dataset_label__Intercept",
                        "sd_dataset_label__c.lfs", 
                        "b_sigma_Intercept",
-                       "sd_dataset_label__sigma_Intercept")),
+                       "sd_dataset_label__sigma_Intercept",
+                       "cor_dataset_label__Intercept__c.lfs")),
              labeller = label4)
 
 plot_sim_estimated(frag_sbc_results_4,
@@ -129,13 +135,15 @@ plot_sim_estimated(frag_sbc_results_4,
                                  "b_sigma_Intercept",
                                  # "sd_dataset_label__Intercept",
                                  "sd_dataset_label__c.lfs", 
-                                 "sd_dataset_label__sigma_Intercept")) +
+                                 "sd_dataset_label__sigma_Intercept",
+                                 "cor_dataset_label__Intercept__c.lfs")) +
   facet_wrap(~factor(variable, 
                      c("b_Intercept", "b_c.lfs",
                        "sd_dataset_label__Intercept",
                        "sd_dataset_label__c.lfs", 
                        "b_sigma_Intercept",
-                       "sd_dataset_label__sigma_Intercept")),
+                       "sd_dataset_label__sigma_Intercept",
+                       "cor_dataset_label__Intercept__c.lfs")),
              labeller = label4, scales = 'free')
 dev.off()
 

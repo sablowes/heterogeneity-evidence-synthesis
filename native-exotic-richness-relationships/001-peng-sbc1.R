@@ -16,7 +16,7 @@ peng_template_data1 <- tibble(z = dat$z,
 
 # priors are needed to fully define the data generating process
 peng_priors1 <- prior(normal(0.13,0.06), class = "Intercept") + # prior for mu (intercept)
-  prior(normal(0.04,0.02), class = 'b') + # prior for mu (slope)
+  prior(normal(0.04,0.01), class = 'b') + # prior for mu (slope)
   prior(normal(0,0.25), class = sd, group = Study, coef = Intercept) +
   prior(normal(0,0.2), class = sd, group = Study:Case, coef = Intercept)
 
@@ -38,7 +38,7 @@ peng_generator1 <- SBC::SBC_generator_brms(z | se(var_z) ~ x + (1 | Study/Case),
 # combination of simulated effect size and the known se it gets assigned here. 
 # Instead, I take a brute force approach (i.e., many simulated data sets), and 
 # will discard poor fits to the simulated data
-peng_datasets1 <- generate_datasets(peng_generator1, 1000)
+peng_datasets1 <- generate_datasets(peng_generator1, 500)
 
 # backend required for sbc: these are the models fit to the simulated data 
 peng_backend1 <- SBC_backend_brms_from_generator(peng_generator1, 
@@ -61,7 +61,7 @@ peng_ok1 <- peng_results1$backend_diagnostics %>%
 # want to find fits with rhats > 1.05
 max_rhat1 <- c()
 for(i in 1:length(peng_results1$fits[peng_ok1])){
-  print(i)
+  print(i, ' of ', length(peng_ok1))
   max_rhat1[i] <- max(rhat(peng_results1$fits[peng_ok1][[i]]), na.rm = TRUE)
 }
 
@@ -130,6 +130,6 @@ print(object.size(peng_results1[peng_ok1]), units = "Mb")
 peng_sbc_results_1 <- peng_results1[peng_ok1]
 
 save(peng_sbc_results_1,
-     file = paste0(wkdir, '../model_fits/sbc-results/peng_sbc_results_goodfits_1.1.Rdata'))
+     file = paste0(wkdir, '../model_fits/sbc-results/peng_sbc_results_goodfits_1.1-extra.Rdata'))
       
      

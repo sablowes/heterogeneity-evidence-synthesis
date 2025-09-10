@@ -186,7 +186,8 @@ cowplot::plot_grid(ab_panels,
                    cowplot::plot_grid(c_panel,
                                       d_panel, 
                                       nrow = 1),
-                   nrow = 2)
+                   nrow = 2,
+                   labels = 'Figure 2')
 
 ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
        width = 200, height = 180, units = 'mm')

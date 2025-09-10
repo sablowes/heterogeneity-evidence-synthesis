@@ -16,17 +16,21 @@ peng_template_data2 <- tibble(z = dat$z,
                               Case = dat$Case)
 
 # priors are needed to fully define the data generating process
-peng_priors2 <- prior(normal(0.13,0.05), class = "Intercept") + # mu
+peng_priors2 <- prior(normal(0.13,0.06), class = "Intercept") + # mu
   prior(normal(0.04,0.02), class = 'b') +
   prior(normal(-1.1, 0.2), class = Intercept, dpar = sigma) + 
   prior(normal(-0.03, 0.03), class = b, dpar = sigma) + 
-  prior(normal(0,0.2), class = 'sd', lb = 0)  
+  prior(normal(0,0.22), class = sd, group = Study, lb = 0)
 
 # use brms to simulate data (with same model as Peng et al. meta-regression)
-peng_generator2 <- SBC::SBC_generator_brms(bf(z | se(var_z, sigma = TRUE) ~ x + (1 | Study), 
+peng_generator2 <- SBC::SBC_generator_brms(bf(z | se(sqrt(var_z), 
+                                                     sigma = TRUE) ~ x + 
+                                                (1 | Study),
                                               sigma ~ x),
-                                           data = peng_template_data2, prior = peng_priors2, 
-                                           thin = 50, warmup = 10000, refresh = 2000)
+                                           data = peng_template_data2,
+                                           prior = peng_priors2,
+                                           thin = 200, warmup = 15000, 
+                                           refresh = 20000)
 
 # generate enough datasets to discover problems if they exist
 peng_datasets2 <- generate_datasets(peng_generator2, 200)
@@ -50,11 +54,18 @@ peng_ok2 <- peng_results2$backend_diagnostics %>%
   filter(n_divergent==0) %>% 
   pull(sim_id)
 
-peng_ok2 <- 
-  peng_results2$default_diagnostics[peng_ok2,] %>% 
-  filter(max_rhat < 1.05) %>% 
-  pull(sim_id)
+# all fits have NAs in the Rhats (due to the fixed sigma parameter)
+# want to find fits with rhats > 1.05
+max_rhat2 <- c()
+for(i in 1:length(peng_results2$fits[peng_ok2])){
+  print(i)
+  max_rhat2[i] <- max(rhat(peng_results2$fits[peng_ok2][[i]]), na.rm = TRUE)
+}
 
+hist(max_rhat2)
+
+peng_ok2 <- peng_ok2[max_rhat2 < 1.15]
+length(peng_ok2)
 
 # some visual diagnostics
 # tidy up the facet labels
@@ -92,6 +103,18 @@ plot_coverage(peng_results2[peng_ok2],
                        "b_sigma_x")),
              labeller = labels)
 
+plot_coverage_diff(peng_results2[peng_ok2],
+              variables = c("Intercept", "b_x", 
+                            "b_sigma_Intercept",
+                            "b_sigma_x",
+                            "sd_Study__Intercept")) +
+  facet_wrap(~factor(variable, 
+                     c("Intercept", "b_x", 
+                       "sd_Study__Intercept",
+                       "b_sigma_Intercept",
+                       "b_sigma_x")),
+             labeller = labels)
+
 plot_ecdf(peng_results2[peng_ok2],
                variables = c("Intercept", "b_x", 
                              "b_sigma_Intercept",
@@ -104,6 +127,17 @@ plot_ecdf(peng_results2[peng_ok2],
                        "b_sigma_x")),
              labeller = labels)
 
+plot_ecdf_diff(peng_results2[peng_ok2],
+          variables = c("Intercept", "b_x", 
+                        "b_sigma_Intercept",
+                        "b_sigma_x",
+                        "sd_Study__Intercept")) +
+  facet_wrap(~factor(variable, 
+                     c("Intercept", "b_x", 
+                       "sd_Study__Intercept",
+                       "b_sigma_Intercept",
+                       "b_sigma_x")),
+             labeller = labels)
 plot_sim_estimated(peng_results2[peng_ok2],
                    variables = c("Intercept", "b_x", 
                                  "b_sigma_Intercept",

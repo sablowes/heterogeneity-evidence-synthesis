@@ -8,6 +8,7 @@ setwd(wkdir)
 
 library(tidyverse)
 library(brms)
+library(cmdstanr)
 library(tidybayes)
 library(ggridges)
 library(SBC)
@@ -46,9 +47,9 @@ if(use_cmdstanr) {
 options(mc.cores = parallel::detectCores() - 2)
 
 # Enabling parallel processing via future
-plan(multisession)
+# plan(multisession)
 
-# The fits are very fast,
-# so we force a minimum chunk size to reduce overhead of
-# paralellization and decrease computation time.
+# The fits are generally fast,
+# so forcing a minimum chunk size to reduce overhead of
+# paralellization can decrease computation time.
 options(SBC.min_chunk_size = 5)

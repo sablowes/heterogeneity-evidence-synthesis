@@ -11,31 +11,32 @@ dat <- read_csv(paste0(wkdir, '/native-exotic-richness-relationships/data/DataS2
 peng_template_data4 <- tibble(z = dat$z,
                               var_z = dat$var_z,
                               x = dat$ln_Grain,
-                              Study = dat$Study,
-                              Case = dat$Case)
+                              Study = dat$Study)
 
 # priors are needed to fully define the data generating process
 peng_priors4 <- prior(normal(0.17,0.05), class = Intercept) + # mu
   prior(normal(0.04,0.02), class = b) +
   prior(normal(-1.6, 0.25), class = Intercept, dpar = sigma) + 
-  prior(normal(0,0.2), class = sd, group = Study) +
+  prior(normal(0,0.2), class = sd, group = Study) + 
   prior(normal(0,0.7), class = sd, dpar = sigma)
 
 # use brms to simulate data (with same model as Peng et al. meta-regression)
-peng_generator4 <- SBC::SBC_generator_brms(bf(z | se(var_z, sigma = TRUE) ~ x + (1 | Study), 
+peng_generator4 <- SBC::SBC_generator_brms(bf(z | se(sqrt(var_z), sigma = TRUE) ~ 
+                                                x + (1 | Study),
                                               sigma ~ 1 + (1 | Study)),
-                                           data = peng_template_data4, 
+                                           data = peng_template_data4,
                                            prior = peng_priors4, 
                                            control = list(adapt_delta = 0.95),
-                                           thin = 50, warmup = 10000, 
-                                           refresh = 2000)
+                                           thin = 200, warmup = 15000, 
+                                           refresh = 5000,
+                                           backend = 'cmdstanr')
 
-# generate 100 datasets 
-peng_datasets4 <- generate_datasets(peng_generator4, 200)
+# generate datasets 
+peng_datasets4 <- generate_datasets(peng_generator4, 500)
 
 # backend required for sbc: these are the models fit to the simulated data 
 peng_backend4 <- SBC_backend_brms_from_generator(peng_generator4, 
-                                                 chains = 8, thin = 1,
+                                                 chains = 4, thin = 1,
                                                  warmup = 1000, iter = 2000,
                                                  prior = c(prior(normal(0.3,1), class = Intercept),
                                                            prior(normal(0,1), class = b),
@@ -49,29 +50,20 @@ peng_results4 <- compute_SBC(peng_datasets4, peng_backend4)
 
 # some bad diagnostics
 peng_ok4 <- peng_results4$backend_diagnostics %>% 
-  filter(n_divergent==0) %>% 
+  filter(n_divergent == 0) %>% 
   pull(sim_id)
 
-peng_ok4 <- peng_results4$default_diagnostics[peng_ok4,] %>% 
-  filter(max_rhat <= 1.05) %>% 
-  pull(sim_id)
+# all fits have NAs in the Rhats (due to how the model is parameterised)
+max_rhat4 <- c()
+for(i in 1:length(peng_results4$fits[peng_ok4])){
+  print(paste(i, ' in ', length(peng_ok4)))
+  max_rhat4[i] <- max(rhat(peng_results4$fits[peng_ok4][[i]]), na.rm = TRUE)
+}
 
-# lots of divergent transitions, more simulations 
-peng_datasets4a <- generate_datasets(peng_generator4, 400)
-peng_results4a <- compute_SBC(peng_datasets4a, peng_backend4)
+hist(max_rhat4)
 
-peng_ok4a <- peng_results4a$backend_diagnostics %>% 
-  filter(n_divergent==0) %>% 
-  pull(sim_id)
-
-peng_ok4a <- peng_results4a$default_diagnostics[peng_ok4a,] %>% 
-  filter(max_rhat <= 1.05) %>% 
-  pull(sim_id)
-
-
-bind_results(peng_results4[peng_ok4],
-             peng_results4a[peng_ok4a]) %>% 
-  length
+peng_ok4 <- peng_ok4[max_rhat4 < 1.05]
+length(peng_ok4)
 
 # some visual diagnostics
 # tidy up the labels for the plots (facets)
@@ -87,8 +79,7 @@ labels <- as_labeller(c("Intercept" = "beta[0]",
 pdf(paste0(wkdir, 'native-exotic-richness-relationships/figures/peng_sbc4.pdf'),
     width = 7, height = 5)
 
-plot_rank_hist(bind_results(peng_results4[peng_ok4],
-                            peng_results4a[peng_ok4a]),
+plot_rank_hist(peng_results4[peng_ok4],
                variables = c("Intercept", "b_x", 
                              "b_sigma_Intercept",
                              "sd_Study__Intercept",
@@ -100,8 +91,7 @@ plot_rank_hist(bind_results(peng_results4[peng_ok4],
                        "sd_Study__sigma_Intercept")),
              labeller = labels)
 
-plot_coverage(bind_results(peng_results4[peng_ok4],
-                           peng_results4a[peng_ok4a]),
+plot_coverage(peng_results4[peng_ok4],
               variables = c("Intercept", "b_x", 
                             "b_sigma_Intercept",
                             "sd_Study__Intercept",
@@ -113,8 +103,7 @@ plot_coverage(bind_results(peng_results4[peng_ok4],
                        "sd_Study__sigma_Intercept")),
              labeller = labels)
 
-plot_ecdf(bind_results(peng_results4[peng_ok4],
-                       peng_results4a[peng_ok4a]),
+plot_ecdf(peng_results4[peng_ok4],
                variables = c("Intercept", "b_x", 
                              "b_sigma_Intercept",
                              "sd_Study__Intercept",
@@ -126,8 +115,7 @@ plot_ecdf(bind_results(peng_results4[peng_ok4],
                        "sd_Study__sigma_Intercept")),
              labeller = labels)
 
-plot_sim_estimated(bind_results(peng_results4[peng_ok4],
-                                peng_results4a[peng_ok4a]),
+plot_sim_estimated(peng_results4[peng_ok4],
                    variables = c("Intercept", "b_x", 
                                  "b_sigma_Intercept",
                                  "sd_Study__Intercept",
@@ -141,12 +129,10 @@ plot_sim_estimated(bind_results(peng_results4[peng_ok4],
 
 dev.off()
 
-print(object.size(bind_results(peng_results4[peng_ok4],
-                               peng_results4a[peng_ok4a])), 
+print(object.size(peng_results4[peng_ok4]), 
       units = "Gb")
 
-peng_sbc_results_4 <- bind_results(peng_results4[peng_ok4],
-                                   peng_results4a[peng_ok4a])
+peng_sbc_results_4 <- peng_results4[peng_ok4]
 
 save(peng_sbc_results_4,
      file = paste0(wkdir, '../model_fits/sbc-results/peng_sbc_results_goodfits_1.4.Rdata'))
