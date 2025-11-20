@@ -12,16 +12,17 @@ a primary data compilation. Each case study is described in detail in the accomp
 Use the init-dir.R file to set up the working directory, load packages and   
 source custom functions for calculating and plotting the results.   
 
-Each case study folder contains multiple subfolders:   
-- one with the data needed to reproduce results,  
-- one with the figures, and 
-- one with the model fits and results of cross-validation.  
 The main folder for each case study has files to: 
 - fit models, 
 - do simulation-based calibration, 
 - do cross-validation (cross validation for the primary data case study  
 was done a scientific computing cluster), 
 - wrangle results and plot figures.
+
+Each case study folder contains multiple subfolders:
+- one with the data needed to reproduce results,  
+- one with the figures, and 
+- one with the model fits and results of cross-validation.  
 
 ## Fragment size richness relationships
 
