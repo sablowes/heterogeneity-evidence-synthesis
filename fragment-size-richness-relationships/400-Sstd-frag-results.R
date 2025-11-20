@@ -78,7 +78,9 @@ bind_rows(
   coord_flip() + 
   theme_minimal() +
   theme(panel.border = element_rect(colour = 'black', fill = NA),
-        strip.text = element_text(hjust = 0, size = 10))
+        strip.text = element_text(hjust = 0, size = 9),
+        axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8))
 
 # visualise variation in the relationship between patch size and residuals
 fs_dat <- read_csv(paste0(wkdir, 'fragment-size-richness-relationships/data/2_biodiv_frag_fcont_10_mabund_as_is.csv'))
@@ -124,7 +126,10 @@ c_panel <- sigma_fs_pop %>%
        y = expression(sigma),
        tag = '(c)') +
   theme_minimal() +
-  theme(panel.border = element_rect(colour = 'black', fill = NA))
+  theme(panel.border = element_rect(colour = 'black', fill = NA),
+        axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
+        plot.tag = element_text(size = 9))
 
 study_sigma <- Sstd_lognorm_fragSize_sigma %>% 
   spread_draws(b_c.lfs,
@@ -171,16 +176,19 @@ d_panel <- ggplot() +
               group_by(taxa) %>% 
               summarise(n_study = n_distinct(dataset_label)) %>% 
               ungroup(),
-            aes(x=0.7, y=taxa, 
+            aes(x=0.75, y=taxa, 
                 label=paste('n[study] == ', n_study)),
-            size=3.5,
+            size=2.5,
             nudge_y = 0.25, parse = T) +
   labs(y = 'Taxon group',
        x = expression(sigma),
        tag = '(d)') +
   coord_cartesian(xlim = c(0, 1)) +
   theme_minimal() +
-  theme(panel.border = element_rect(colour = 'black', fill = NA))
+  theme(panel.border = element_rect(colour = 'black', fill = NA),
+        axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
+        plot.tag = element_text(size = 9))
   
 cowplot::plot_grid(ab_panels,
                    cowplot::plot_grid(c_panel,
@@ -190,7 +198,7 @@ cowplot::plot_grid(ab_panels,
                    labels = 'Figure 2')
 
 # ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
-#        width = 200, height = 180, units = 'mm')
+#        width = 180, height = 180, units = 'mm')
 
 # want to check that all models support ecosystem decay for 
 # standardized species richness

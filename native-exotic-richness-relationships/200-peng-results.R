@@ -57,9 +57,11 @@ bind_rows(make_plot_data(peng.kfold) %>%
   coord_flip() +
   theme_minimal() +
   theme(panel.border = element_rect(fill = NA, colour = 'black'),
-        strip.text = element_text(hjust = 0, size = 10),
+        strip.text = element_text(hjust = 0, size = 9),
         axis.ticks = element_line(colour = 'black'),
-        axis.text.y = element_text(hjust = 0))
+        axis.text.y = element_text(hjust = 0, size = 7),
+        axis.text.x = element_text(size = 7),
+        axis.title = element_text(size = 8))
 
 # want to plot estimate of decline in residual variation with grain size, 
 # and residual variation as a function of extent
@@ -142,10 +144,13 @@ ggplot() +
        x = expression(paste('Grain size [log(', m^2, ')]')),
        tag = '(c)') +
   theme_minimal() + 
-  theme(legend.position = c(1,1),
+  theme(legend.position = 'none',
         legend.justification = c(1,1),
         panel.border = element_rect(fill = NA, colour = 'black'),
-        axis.ticks = element_line(colour = 'black')) 
+        axis.ticks = element_line(colour = 'black'),
+        axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
+        plot.tag = element_text(size = 9)) 
 
 peng_sigma_extent_plot <-
   ggplot() + 
@@ -184,7 +189,10 @@ peng_sigma_extent_plot <-
   theme_minimal() + 
   theme(panel.border = element_rect(fill = NA, colour = 'black'),
         axis.ticks = element_line(colour = 'black'),
-        axis.text.x = element_text(hjust = 1, angle = 30))
+        axis.text.x = element_text(hjust = 1, angle = 30, size = 7),
+        axis.text.y = element_text(size = 7),
+        axis.title = element_text(size = 8),
+        plot.tag = element_text(size = 9))
 
 cowplot::plot_grid(peng_ms_results,
                    cowplot::plot_grid(peng_sigma_grain_plot,
@@ -194,7 +202,7 @@ cowplot::plot_grid(peng_ms_results,
                    labels = 'Figure 1')
 
 # ggsave('native-exotic-richness-relationships/figures/Fig1.pdf',
-#        width = 200, height = 200, units = 'mm')
+#        width = 180, height = 180, units = 'mm')
 
 
 # compare parameter estimates
