@@ -1,8 +1,8 @@
 # Location-scale models and cross validation to advance quantitative evidence synthesis
 
-This repository contains data and code to accompany 'Known unknowns and 
-model selection in ecological evidence synthesis'
-https://doi.org/10.1101/2024.12.18.629303
+This repository contains data and code to accompany 'Location-scale models and  
+cross validation to advance quantitative evidence synthesis', forthcoming at 
+Ecology. The work was published as a preprint available at: https://doi.org/10.1101/2024.12.18.629303
 
 There are two folders - one for each case study presented in the ms.  
 Briefly, each case study represents an example of two common forms  
