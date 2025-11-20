@@ -1,16 +1,14 @@
-# code to fit models to patch-scale standardised species richness in 
-# habitat fragments
+# code to fit models to patch-scale effort-standardised species richness as 
+# function of habitat fragment size
 
 # need to execute init-dir.R first
 source('~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-evidence-synthesis/init-dir.R')
-
 
 # load the data: see Chase et al 2020 Nature (and associated code repo) for full details
 frag <- read_csv(paste0(wkdir, 'fragment-size-richness-relationships/data/2_biodiv_frag_fcont_10_mabund_as_is.csv'))
 
 # add mean centred (log) fragsize
 frag$c.lfs <- log(frag$frag_size_num) - mean(log(frag$frag_size_num))
-
 
 #----- simplest model: diversity as a function of fragment size; 
 # allow fragment size (slope) to vary by study (varying intercept)----
@@ -67,8 +65,7 @@ Sstd_lognorm_fragSize_sigma_fs <- brm(bf(S_std_mean ~ c.lfs + (c.lfs | dataset_l
 save(Sstd_lognorm_fragSize_sigma_fs,
      file = paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m3.Rdata'))
 
-# is residual variation correlated with study level variation 
-# (in both intercept and slopes)?
+# allow study-level parameters for location and scale to covary
 Sstd_lognorm_fragSize_sigma_cor <- brm(bf(S_std_mean ~ c.lfs + (c.lfs | p | dataset_label),
                                           sigma ~ 1 + (1 | p | dataset_label)),
                                        # two observations have zero for the response, remove for lognormal distribution
@@ -87,7 +84,7 @@ save(Sstd_lognorm_fragSize_sigma_cor,
      file = paste0(wkdir, 'fragment-size-richness-relationships/model-fits-CV-results/Sstd-m4.Rdata'))
 
 # varying residuals as a function of fragment size,
-# with possible correlation with varying effects
+# with correlation among varying effects for location and scale parameters
 Sstd_lognorm_fragSize_sigma_fs_cor <- brm(bf(S_std_mean ~ c.lfs + (c.lfs | p | dataset_label),
                                              sigma ~ c.lfs + (c.lfs | p | dataset_label)),
                                           # two observations have zero for the response, remove for lognormal distribution

@@ -45,7 +45,6 @@ frag_generator5 <- SBC::SBC_generator_brms(bf(S_std_mean ~ c.lfs + (c.lfs | rho 
 
 frag_datasets5 <- generate_datasets(frag_generator5, 200)
 
-
 frag_backend5 <- SBC_backend_brms_from_generator(frag_generator5, 
                                                  chains = 2, 
                                                  thin = 1,
@@ -61,19 +60,19 @@ frag_backend5 <- SBC_backend_brms_from_generator(frag_generator5,
 
 frag_results5 <- compute_SBC(frag_datasets5, frag_backend5)
 
+# identify fits with no divergent transitions
 ok_frag5 <- frag_results5$backend_diagnostics %>% 
   filter(n_divergent == 0) %>% 
   pull(sim_id)
 
-# rhat diagnostics in sbc output have NAs (not sure why)
-# want to find fits with rhats > 1.05
+# rhat diagnostics in sbc output have NAs
 max_rhat5 <- c()
 for(i in 1:length(frag_results5$fits[ok_frag5])){
   print(i)
   max_rhat5[i] <- max(rhat(frag_results5$fits[ok_frag5][[i]]), na.rm = TRUE)
 }
 
-# remove the some more problematic fits
+# remove fits with max(rhat) > 1.05
 ok_frag5 <- ok_frag5[max_rhat5 < 1.05]
 
 label5 <- as_labeller(c("b_Intercept" = "beta[0]",
@@ -213,5 +212,3 @@ frag_sbc_results_5 <- frag_results5[ok_frag5]
 
 save(frag_sbc_results_5,
      file = paste0(wkdir, '../model_fits/sbc-results/frag_sbc_results_goodfits_2.5.Rdata'))
-
-

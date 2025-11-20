@@ -56,18 +56,16 @@ ok_frag4 <- frag_results4$backend_diagnostics %>%
   pull(sim_id)
 
 # rhat diagnostics in sbc output have NAs (not sure why)
-# want to find fits with rhats > 1.05
 max_rhat4 <- c()
 for(i in 1:length(frag_results4$fits[ok_frag4])){
   print(i)
   max_rhat4[i] <- max(rhat(frag_results4$fits[ok_frag4][[i]]), na.rm = TRUE)
 }
 
-# remove the some more problematic fits
+# remove the fits with max_rhat > 1.05
 ok_frag4 <- ok_frag4[max_rhat4 < 1.05]
 
 frag_sbc_results_4 <- frag_results4[ok_frag4]
-
 
 # plot diagnostics
 label4 <- as_labeller(c("b_Intercept" = "beta[0]",
@@ -154,4 +152,3 @@ length(frag_sbc_results_4) # 181
 
 save(frag_sbc_results_4,
      file = paste0(wkdir, '../model_fits/sbc-results/frag_sbc_results_goodfits_2.4.Rdata'))
-

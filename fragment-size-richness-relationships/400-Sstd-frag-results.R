@@ -189,8 +189,8 @@ cowplot::plot_grid(ab_panels,
                    nrow = 2,
                    labels = 'Figure 2')
 
-ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
-       width = 200, height = 180, units = 'mm')
+# ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/Fig2.pdf'),
+#        width = 200, height = 180, units = 'mm')
 
 # want to check that all models support ecosystem decay for 
 # standardized species richness
@@ -243,8 +243,8 @@ bind_rows(
   theme_minimal() +
   theme(axis.title.x = element_text())
 
-ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-decay.pdf'),
-       width = 200, height = 100, units = 'mm')
+# ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-decay.pdf'),
+#        width = 200, height = 100, units = 'mm')
 
 # plot correlations from model 2.5
 corr_post <- Sstd_lognorm_fragSize_sigma_fs_cor %>% 
@@ -296,10 +296,10 @@ corr_post %>%
         legend.position = 'top')
 
 
-ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-correlations.pdf'),
-       width = 290, height = 200, units = 'mm')
+# ggsave(paste0(wkdir, 'fragment-size-richness-relationships/figures/FigSx-correlations.pdf'),
+#        width = 290, height = 200, units = 'mm')
 
-# check interpretation, calculate study-level slopes
+# check interpretation of correlation, calculate study-level slopes
 study_slopes <- Sstd_lognorm_fragSize_sigma_fs_cor %>% 
   spread_draws(b_c.lfs,
                r_dataset_label[dataset_label, term],
@@ -326,5 +326,5 @@ study_slopes %>%
                             beta[1]^sigma + beta[`1i`]^sigma, ')'))) +
   theme_minimal()
 
-ggsave(paste0(wkdir,'fragment-size-richness-relationships/figures/FigSx-slope-slope.pdf'),
-       width = 130, height = 130, units = 'mm')
+# ggsave(paste0(wkdir,'fragment-size-richness-relationships/figures/FigSx-slope-slope.pdf'),
+#        width = 130, height = 130, units = 'mm')

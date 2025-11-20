@@ -1,4 +1,4 @@
-# results figures for native-exotic richness relationships
+# results figures for native-exotic species richness relationship case study
 source('~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-evidence-synthesis/init-dir.R')
 seed = 123
 
@@ -18,15 +18,11 @@ peng.kfold <- tibble(m1 = peng_m1_kfold$pointwise[,'elpd_kfold'],
                      m3 = peng_sigma_extent_kfold$pointwise[,'elpd_kfold'],
                      m4 = peng_sigma_study_kfold$pointwise[,'elpd_kfold'])
 
-#peng_sd_linear_kfold$pointwise[,'elpd_kfold'],
-
 # leave-one-group-out cv
 load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m1-logo.Rdata'))
 load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m2-logo.Rdata'))
 load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m3-logo.Rdata'))
 load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m4-logo.Rdata'))
-
-
 
 peng.logo <- tibble(m1 = cv10g_m1$pointwise[,'elpd_kfold'],
                     m2 = cv10g_m2$pointwise[,'elpd_kfold'],
@@ -190,11 +186,6 @@ peng_sigma_extent_plot <-
         axis.ticks = element_line(colour = 'black'),
         axis.text.x = element_text(hjust = 1, angle = 30))
 
-
-# ggsave('~/Dropbox/1current/evidence-synthesis-heterogeneity/figures/sd-extent.pdf',
-#        width = 150, height = 150, units = 'mm')
-
-
 cowplot::plot_grid(peng_ms_results,
                    cowplot::plot_grid(peng_sigma_grain_plot,
                                       peng_sigma_extent_plot,
@@ -202,8 +193,8 @@ cowplot::plot_grid(peng_ms_results,
                    nrow = 2,
                    labels = 'Figure 1')
 
-ggsave('native-exotic-richness-relationships/figures/Fig1.pdf',
-       width = 200, height = 200, units = 'mm')
+# ggsave('native-exotic-richness-relationships/figures/Fig1.pdf',
+#        width = 200, height = 200, units = 'mm')
 
 
 # compare parameter estimates
@@ -238,21 +229,6 @@ peng_sigma_study_pars <- peng_sigma_study %>%
                ndraws = 1000) %>% 
   ungroup() %>% 
   mutate(model = '1.4')
-
-# alternate version of linear model for residual variation 
-# (not presented in revision)
-# load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m5-sd-linear.Rdata'))
-# peng_sd_grain_pars <- peng_sd_linear %>% 
-#   gather_draws(`b_.*`, `sd_.*`,
-#                regex = TRUE,
-#                seed = seed, 
-#                ndraws = 1000) %>% 
-#   # mutate(.variable = case_when(str_replace()
-#   ungroup() %>% 
-#   mutate(model = '1.2a')
-
-
-
 
 bind_rows(m1_pars,
           peng_sigma_grain_pars,
@@ -294,6 +270,6 @@ bind_rows(m1_pars,
         axis.ticks = element_line(colour = 'black'),
         axis.text = element_text(size = 12))
 
-ggsave('native-exotic-richness-relationships/figures/FigSx-shared-pars.pdf',
-       width = 125, height = 125, units = 'mm')  
+# ggsave('native-exotic-richness-relationships/figures/FigSx-shared-pars.pdf',
+#        width = 125, height = 125, units = 'mm')  
 

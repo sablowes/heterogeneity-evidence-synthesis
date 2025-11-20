@@ -35,19 +35,3 @@ plan(multisession, workers = 8)
 cv10g_m4 <- kfold(peng_sigma_study, group = 'Study')
 save(cv10g_m4, 
      file = paste0(wkdir, '/native-exotic-richness-relationships/model-fits-CV-results/peng-m4-logo.Rdata'))
-
-# model five
-load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m5.Rdata'))
-plan(multisession, workers = 8)
-cv10g_m5 <- kfold(peng_sigma_study_corr, group = 'Study')
-save(cv10g_m5, 
-     file = paste0(wkdir, '/native-exotic-richness-relationships/model-fits-CV-results/peng-m5-logo.Rdata'))
-
-
-# alternate parameterisation of model 2
-load(paste0(wkdir, 'native-exotic-richness-relationships/model-fits-CV-results/peng-m2-alt-sd-linear.Rdata'))
-# leave one group out cv
-plan(multisession, workers = 8)
-cv10g_m2_alt <- kfold(peng_sd_linear, group = 'Study')
-save(cv10g_m2_alt, 
-     file = paste0(wkdir, '/native-exotic-richness-relationships/model-fits-CV-results/peng-m2-alt-sd-linear-logo.Rdata'))

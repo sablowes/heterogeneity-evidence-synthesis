@@ -8,7 +8,7 @@ dat <- read_csv(paste0(wkdir, '/native-exotic-richness-relationships/data/DataS2
 
 
 # use continuous predictor, want it to look like ln_Grain in the Peng et al data
-# these are the sample sizes in Peng et al. (spoiler: things don't look good)
+# these are the sample sizes in Peng et al.
 peng_template_data2 <- tibble(z = dat$z,
                               var_z = dat$var_z,
                               x = dat$ln_Grain,
@@ -49,13 +49,13 @@ peng_backend2 <- SBC_backend_brms_from_generator(peng_generator2,
 peng_results2 <- compute_SBC(peng_datasets2, 
                              peng_backend2)
 
-# some bad diagnostics (well lots actually)
+# some bad diagnostics, remove fits with divergent transitions
 peng_ok2 <- peng_results2$backend_diagnostics %>% 
   filter(n_divergent==0) %>% 
   pull(sim_id)
 
 # all fits have NAs in the Rhats (due to the fixed sigma parameter)
-# want to find fits with rhats > 1.05
+# get the rhats that are not NA for inspection
 max_rhat2 <- c()
 for(i in 1:length(peng_results2$fits[peng_ok2])){
   print(i)
@@ -152,6 +152,7 @@ plot_sim_estimated(peng_results2[peng_ok2],
 
 dev.off()
 
+# check object size before saving
 print(object.size(peng_results2[peng_ok2]), units = "Mb")
 
 peng_sbc_results_2 <- peng_results2[peng_ok2]

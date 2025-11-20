@@ -56,23 +56,26 @@ frag_backend1 <- SBC_backend_brms_from_generator(frag_generator1, chains = 2,
 
 frag_results1 <- compute_SBC(frag_datasets1, frag_backend1)
 
+# inspect divergent transitions
 hist(frag_results1$backend_diagnostics$n_divergent)
 
+# retain fits with no divergent transitions
 ok_frag1 <- frag_results1$backend_diagnostics %>% 
   filter(n_divergent == 0) %>% 
   pull(sim_id)
 
-# rhat diagnostics in sbc output have NAs (not sure why)
-# want to find fits with rhats > 1.05
+# rhat diagnostics in sbc output have NAs
+# get non-NA rhats for inspection
 max_rhat1 <- c()
 for(i in 1:length(frag_results1$fits[ok_frag1])){
   print(i)
   max_rhat1[i] <- max(rhat(frag_results1$fits[ok_frag1][[i]]), na.rm = TRUE)
 }
 
+# reduce to fits with max rhat < 1.05
 ok_frag1 <- ok_frag1[max_rhat1 < 1.05]
 
-# some visual diagnostics
+# neat labels for visual diagnostics
 label1 <- as_labeller(c("b_Intercept" = "beta[0]",
                         "b_c.lfs" = "beta[1]",
                         "sd_dataset_label__Intercept" = "sigma[0]",
@@ -142,7 +145,7 @@ plot_sim_estimated(frag_sbc_results_1,
              labeller = label1, scales = 'free')
 dev.off()
 
-# save 
+# check size and save 
 print(object.size(frag_results1[ok_frag1]), units = "Gb")
 
 frag_sbc_results_1 <- frag_results1[ok_frag1]

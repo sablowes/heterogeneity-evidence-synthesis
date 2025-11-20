@@ -6,9 +6,8 @@ source('~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-eviden
 # want to base simulations on data similar to those in Peng et al. meta-analysis
 dat <- read_csv(paste0(wkdir, '/native-exotic-richness-relationships/data/DataS2_MetaAnalysisDatabase.csv'))
 
-
 # use continuous predictor, want it to look like ln_Grain in the Peng et al data
-# these are the sample sizes in Peng et al. (spoiler: things don't look good)
+# these are the sample sizes in Peng et al. 
 peng_template_data3a <- tibble(z = dat$z,
                               var_z = dat$var_z,
                               x = dat$ln_Grain,
@@ -45,13 +44,13 @@ peng_backend3a <- SBC_backend_brms_from_generator(peng_generator3a,
 # do sbc
 peng_results3a <- compute_SBC(peng_datasets3a, peng_backend3a)
 
-# keep fits with no divergent transitions
+# keep fits with small numbers of divergent transitions
 peng_ok3a <- peng_results3a$backend_diagnostics %>% 
   filter(n_divergent<10) %>% 
   pull(sim_id)
 
 # all fits have NAs in the Rhats (due to the fixed sigma parameter)
-# want to find fits with rhats > 1.05
+# get the rhats that are not NA for inspection
 max_rhat3 <- c()
 for(i in 1:length(peng_results3a$fits[peng_ok3a])){
   print(i)
@@ -65,6 +64,8 @@ length(peng_ok3a)
 
 # some visual diagnostics
 # peng_results3a$fits[[1]] %>% variables
+
+# define labels for plotting
 labels <- as_labeller(c("Intercept" = "beta[0]",
                         "b_x" = "beta[1]",
                         "sd_Study__Intercept" = "tau",
@@ -170,6 +171,7 @@ plot_sim_estimated(peng_results3a[peng_ok3a],
 
 dev.off()
 
+# check object size before saving
 print(object.size(peng_results3a[peng_ok3a]), units = "Mb")
 
 peng_sbc_results_3a <- peng_results3a[peng_ok3a]

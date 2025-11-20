@@ -7,7 +7,7 @@ source('~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-eviden
 dat <- read_csv(paste0(wkdir, '/native-exotic-richness-relationships/data/DataS2_MetaAnalysisDatabase.csv'))
 
 # use continuous predictor, want it to look like ln_Grain in the Peng et al data
-# these are the sample sizes in Peng et al. (spoiler: things don't look good)
+# these are the sample sizes in Peng et al.
 peng_template_data1 <- tibble(z = dat$z,
                               var_z = dat$var_z,
                               x = dat$ln_Grain,
@@ -32,7 +32,7 @@ peng_generator1 <- SBC::SBC_generator_brms(z | se(var_z) ~ x + (1 | Study/Case),
 # generate enough to pick up problems if they exist
 # NB: fits to simulated data can have problems (e.g., due to the combination of 
 # simulated effect size and known se, so some rhats > 1.05, and potentially many
-# divergent transitions. So, we'll end up discarding some of these
+# divergent transitions. So, we'll end up discarding some of these fits.
 # Vignettes show how rejection sampling can be used to prevent unrealistic data being included
 # in these datasets (e.g., many abs(z) > 3), though we'd need to consider the 
 # combination of simulated effect size and the known se it gets assigned here. 
@@ -52,13 +52,13 @@ peng_backend1 <- SBC_backend_brms_from_generator(peng_generator1,
 # do sbc
 peng_results1 <- compute_SBC(peng_datasets1, peng_backend1)
 
-# some bad diagnostics
+# remove fits with divergent transitions
 peng_ok1 <- peng_results1$backend_diagnostics %>% 
   filter(n_divergent == 0) %>% 
   pull(sim_id)
 
 # all fits have NAs in the Rhats (due to the fixed sigma parameter)
-# want to find fits with rhats > 1.05
+# get the rhats that are not NA for inspection
 max_rhat1 <- c()
 for(i in 1:length(peng_results1$fits[peng_ok1])){
   print(i, ' of ', length(peng_ok1))

@@ -60,19 +60,19 @@ frag_backend3 <- SBC_backend_brms_from_generator(frag_generator3, chains = 2,
 
 frag_results3 <- compute_SBC(frag_datasets3, frag_backend3)
 
+# identify fits with no divergent transitions
 ok_frag3 <- frag_results3$backend_diagnostics %>% 
   filter(n_divergent==0) %>% 
   pull(sim_id)
 
-# rhat diagnostics in sbc output have NAs (not sure why)
-# want to find fits with rhats > 1.05
+# rhat diagnostics in sbc output have NAs
 max_rhat3 <- c()
 for(i in 1:length(frag_results3$fits[ok_frag3])){
   print(i)
   max_rhat3[i] <- max(rhat(frag_results3$fits[ok_frag3][[i]]), na.rm = TRUE)
 }
 
-# remove the some more problematic fits
+# remove the rhat > 1.05
 ok_frag3 <- ok_frag3[max_rhat3 < 1.05]
 
 # visual diagnostics
@@ -165,9 +165,9 @@ plot_sim_estimated(frag_sbc_results_3,
              labeller = label3, scales = 'free')
 
 dev.off()
+
 # save 
 print(object.size(frag_results3[ok_frag3]), units = "Gb")
 
 save(frag_sbc_results_3,
      file = paste0(wkdir, '../model_fits/sbc-results/frag_sbc_results_goodfits_2.3.Rdata'))
-

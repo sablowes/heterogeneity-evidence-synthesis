@@ -48,12 +48,13 @@ peng_backend4 <- SBC_backend_brms_from_generator(peng_generator4,
 # do sbc
 peng_results4 <- compute_SBC(peng_datasets4, peng_backend4)
 
-# some bad diagnostics
+# remove fits with divergent transitions
 peng_ok4 <- peng_results4$backend_diagnostics %>% 
   filter(n_divergent == 0) %>% 
   pull(sim_id)
 
 # all fits have NAs in the Rhats (due to how the model is parameterised)
+# get the rhats that are not NA for inspection
 max_rhat4 <- c()
 for(i in 1:length(peng_results4$fits[peng_ok4])){
   print(paste(i, ' in ', length(peng_ok4)))
@@ -73,8 +74,6 @@ labels <- as_labeller(c("Intercept" = "beta[0]",
                         "b_sigma_Intercept" = "beta[0]^sigma",
                         "sd_Study__sigma_Intercept" = "zeta"), 
                       default = label_parsed)
-
-
 
 pdf(paste0(wkdir, 'native-exotic-richness-relationships/figures/peng_sbc4.pdf'),
     width = 7, height = 5)
@@ -129,6 +128,7 @@ plot_sim_estimated(peng_results4[peng_ok4],
 
 dev.off()
 
+# check size before saving
 print(object.size(peng_results4[peng_ok4]), 
       units = "Gb")
 

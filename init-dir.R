@@ -1,7 +1,9 @@
 ## code to set working directory, 
-# load packages, source a custom function from Yates et al 2021
-# for calculating mod modified one-standard-error rule, and
-# set up sbc (following vignette)
+# load packages, source a custom function from Yates et al 2021 Ecology
+#  https://doi.org/10.1002/ecy.3475
+# for calculating (and preparing for plotting) 
+# the modified one-standard-error rule, and
+# set up sbc (following sbc vignette)
 
 wkdir <- '~/Dropbox/1current/evidence-synthesis-heterogeneity/heterogeneity-evidence-synthesis/'
 setwd(wkdir)
@@ -35,7 +37,6 @@ make_plot_data <- function(metric_data, levels = names(metric_data)){
 # To use cmdstan (set to false to use rstan instead)
 use_cmdstanr <- getOption("SBC.vignettes_cmdstanr", TRUE) 
 
-
 if(use_cmdstanr) {
   library(cmdstanr)
 } else {
@@ -46,10 +47,7 @@ if(use_cmdstanr) {
 # for work on my laptop 
 options(mc.cores = parallel::detectCores() - 2)
 
-# Enabling parallel processing via future
-# plan(multisession)
-
-# The fits are generally fast,
+# The fits are generally relatively fast,
 # so forcing a minimum chunk size to reduce overhead of
 # paralellization can decrease computation time.
 options(SBC.min_chunk_size = 5)
